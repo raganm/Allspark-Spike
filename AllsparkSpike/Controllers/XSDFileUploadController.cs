@@ -118,7 +118,7 @@ namespace AllsparkSpike.Controllers
                     divs.Add(string.Concat("<div class='line'>", firstElement, middleElement, secondElement, "</div>"));
                 }
                 
-                divs.Add("<br/>");
+                //divs.Add("<br/>");
             }
 
             return divs;

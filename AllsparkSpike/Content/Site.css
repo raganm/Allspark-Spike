@@ -67,7 +67,8 @@ textarea {
 }
 
 .line {
-    height: 13px;
+    height: 50px;
+    clear: both;
 }
 
 br {
@@ -80,13 +81,14 @@ br {
 }
 
 .editor {
-    width: 600px;
+    width: 800px;
     float: left;
 }
 
 .item {
     white-space: pre;
-    height: 50px;
+    /*height: 50px;*/
+    /*float: left;*/
 }
 
 .ctmPolicyHeader {
@@ -141,6 +143,24 @@ br {
     padding: 7px;
 }
 
+
+.ctmCollectionHeader {
+    color: orange;
+    font-weight: bold;
+}
+
+.ctmCollection {
+    color: orange;
+    border-style: dashed;
+    border-color: lightsalmon;
+    margin: 10px 10px 10px 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: #fff;
+    padding: 7px;
+}
+
 .header {
     font-size: 30px;
     font-weight: bold;
@@ -157,4 +177,8 @@ br {
 
 .hotspot .ctmPolicy {
     float: left;
+}
+
+.hovered {
+    background-color: lightgray;
 }
