@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema id="HomeQuoteRequestV1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://tempuri.org/HomeQuoteRequestV1.xsd" targetNamespace="http://tempuri.org/HomeQuoteRequestV1.xsd" elementFormDefault="qualified">
+  <xsd:element name="HomeQuoteRequestV1">
+
+    <xsd:complexType>
+      <xsd:all>
+        <xsd:element name="Policy" minOccurs="1">
+          <xsd:complexType>
+            <xsd:all>
+              <xsd:element name="ActualStartDate" type="xsd:date" minOccurs="1" />
+              <xsd:element name="PortalQuoteRef" minOccurs="0">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="255" />
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+              <xsd:element name="CoverLevel" type="xsd:int" minOccurs="0" />
+      <xsd:element name="BuildingsCoverLevel" type="xsd:int" minOccurs="0" />
+              <xsd:element name="ContentsCoverLevel" type="xsd:int" minOccurs="0" />
+              <xsd:element name="CoverType" type="xsd:int" minOccurs="1" />
+              <xsd:element name="PreferredPaymentMethod" type="xsd:int" minOccurs="0" />
+              <xsd:element name="PersonalPossessionsCoverAmount" type="xsd:int" minOccurs="0" />
+              <xsd:element name="PersonalPossessionsCoverExcess" type="xsd:int" minOccurs="0" />
+              <xsd:element name="ContentsAccidentalDamageCoverRequired" type="xsd:boolean" minOccurs="0" />
+              <xsd:element name="BuildingsAccidentalDamageCoverRequired" type="xsd:boolean" minOccurs="0" />
+              <xsd:element name="ContentsVoluntaryExcess" type="xsd:int" minOccurs="0" />
+              <xsd:element name="BuildingsVoluntaryExcess" type="xsd:int" minOccurs="0" />
+              <xsd:element name="YearsBuildingsHeld" type="xsd:int" minOccurs="1" />
+              <xsd:element name="YearsContentsHeld" type="xsd:int" minOccurs="1" />
+              <xsd:element name="Addons" minOccurs="0">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="Addon" type="addon" minOccurs="0" maxOccurs="unbounded" />
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>              
+            </xsd:all>
+          </xsd:complexType>
+        </xsd:element>
+        <xsd:element name="PropertyInfo" minOccurs="1">
+          <xsd:complexType>
+            <xsd:all>
+              <xsd:element name="Address" type="address" minOccurs="1" />
+              <xsd:element name="NumberOfBedrooms" type="xsd:int" minOccurs="1" />
+              <xsd:element name="DatePropertyBuilt" type="xsd:int" minOccurs="1" />
+              <xsd:element name="IndividualYearBuilt" type="xsd:int" minOccurs="0" />
+              <xsd:element name="PropertyType" type="xsd:int" minOccurs="1" />
+              <xsd:element name="WhenOccupied" type="xsd:int" minOccurs="1" />
+              <xsd:element name="PreviouslyFlooded" type="xsd:boolean" minOccurs="1" />
+              <xsd:element name="ExperiencedSubsidence" type="xsd:boolean" minOccurs="1" />
+              <xsd:element name="WallType" type="xsd:boolean" minOccurs="1" />
+              <xsd:element name="RoofType" type="xsd:boolean" minOccurs="1" />
+              <xsd:element name="IsListedBuilding" type="xsd:boolean" minOccurs="1" />
+              <xsd:element name="NumberOfChildren" type="xsd:int" minOccurs="1" />
+              <xsd:element name="MortgageProvider" type="xsd:string" minOccurs="0" />
+              <xsd:element name="MainEntranceLocks" type="xsd:int" minOccurs="0" />
+              <xsd:element name="OtherEntranceLocks" type="xsd:int" minOccurs="0" />
+              <xsd:element name="PatioLocks" type="xsd:int" minOccurs="0" />
+              <xsd:element name="WindowLocks" type="xsd:int" minOccurs="0" />
+              <xsd:element name="Ownership" type="xsd:int" minOccurs="0" />
+              <xsd:element name="AlarmType" type="xsd:int" minOccurs="0" />
+              <xsd:element name="Smokers" type="xsd:boolean" minOccurs="0" />
+              <xsd:element name="PropertyExtended" type="xsd:boolean" minOccurs="0" />
+            </xsd:all>
+          </xsd:complexType>
+        </xsd:element>
+        <xsd:element name="Claims" minOccurs="0">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="Claim" type="claim" minOccurs="0" maxOccurs="5" />
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+        <xsd:element name="SpecifiedItems" minOccurs="0">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="SpecifiedItem" type="specifiedItem" minOccurs="0" maxOccurs="unbounded" />
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+        <xsd:element name="MainPolicyHolder" type="person" minOccurs="1" />
+        <xsd:element name="JointPolicyHolder" type="person" minOccurs="0" />
+      </xsd:all>
+    </xsd:complexType>
+  </xsd:element>
+
+  <!--Complex type Definitions-->
+  <xsd:complexType name="address">
+    <xsd:all>
+      <xsd:element name="HouseNumber" minOccurs="1">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="255" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="Street" minOccurs="1">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="255" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="Street2" minOccurs="0">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="50" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="Street3" minOccurs="0">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="50" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="Street4" minOccurs="0">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="50" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="Street5" minOccurs="0">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="50" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="PostCode" minOccurs="1">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="10" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+    </xsd:all>
+  </xsd:complexType>
+
+  <xsd:complexType name="claim">
+    <xsd:all>
+      <xsd:element name="LossTypeId" type="xsd:int" minOccurs="1" />
+      <xsd:element name="DateOfClaim" type="xsd:date" minOccurs="1" />
+      <xsd:element name="ClaimTypeOfCover" type="xsd:int" minOccurs="1" />
+    </xsd:all>
+  </xsd:complexType>
+
+  <xsd:complexType name="specifiedItem">
+    <xsd:all>
+      <xsd:element name="Value" type="xsd:decimal" minOccurs="1" />
+      <xsd:element name="ItemTypeId" type="xsd:int" minOccurs="1" />
+      <xsd:element name="CoveredAwayFromHome" type="xsd:boolean" minOccurs="1"></xsd:element>
+      <xsd:element name="Description" minOccurs="0" >
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="255" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+    </xsd:all>
+  </xsd:complexType>
+
+  <xsd:complexType name="addon">
+    <xsd:all>
+      <xsd:element name="AddonTypeId" type="xsd:int" minOccurs="1" />
+    </xsd:all>
+  </xsd:complexType>
+
+  <xsd:complexType name="person">
+    <xsd:all>
+      <xsd:element name="TitleId" type="xsd:int" minOccurs="0" />
+      <xsd:element name="Sex" type="xsd:int" minOccurs="0" />
+      <xsd:element name="FirstName" minOccurs="1">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="255" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="LastName" minOccurs="1">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="255" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="BirthDate" type="xsd:date" minOccurs="1" />
+      <xsd:element name="MaritalStatus" type="xsd:int" minOccurs="0" />
+      <xsd:element name="Relationship" type="xsd:int" minOccurs="0" />
+      <xsd:element name="EmailAddress" minOccurs="0">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="255" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="HomePhoneNumber" minOccurs="0">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="40" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="MobilePhoneNumber" minOccurs="0">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="40" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+
+    </xsd:all>
+  </xsd:complexType>
+
+</xsd:schema>

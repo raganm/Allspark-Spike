@@ -1,0 +1,147 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.xmlPreview {
+    max-width: 2000px !important;
+    width: 1200px !important;
+    height: 800px !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+.openingClass {
+    float: left;
+    white-space: pre;
+    margin: 10px 2px 0 2px;
+    padding: 7px;
+    font-family: monospace;
+}
+
+.closingClass {
+    float: left;
+    margin: 10px 2px 0 2px;
+    padding: 7px;
+    font-family: monospace;
+}
+
+.hotspot {
+    float: left;
+    width: 70px;
+    border-style: dashed;
+    margin: 5px;
+    padding: 7px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: #fff;
+}
+
+.line {
+    height: 13px;
+}
+
+br {
+    clear: both;
+}
+
+.toolbox {
+    width: 300px;
+    float: left;
+}
+
+.editor {
+    width: 600px;
+    float: left;
+}
+
+.item {
+    white-space: pre;
+    height: 50px;
+}
+
+.ctmPolicyHeader {
+    color: red;
+    font-weight: bold;
+}
+
+.ctmPolicy {
+    color: red;
+    border-style: dashed;
+    border-color: pink;
+    margin: 10px 10px 10px 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: #fff;
+    padding: 7px;
+}
+
+.ctmOverrideValueHeader {
+    color: blue;
+    font-weight: bold;
+}
+
+.ctmOverride {
+    color: blue;
+    border-style: dashed;
+    border-color: lightblue;
+    margin: 10px 10px 10px 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: #fff;
+    padding: 7px;
+}
+
+
+.ctmOtherHeader {
+    color: green;
+    font-weight: bold;
+}
+
+.ctmOther {
+    color: green;
+    border-style: dashed;
+    border-color: lightgreen;
+    margin: 10px 10px 10px 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: #fff;
+    padding: 7px;
+}
+
+.header {
+    font-size: 30px;
+    font-weight: bold;
+}
