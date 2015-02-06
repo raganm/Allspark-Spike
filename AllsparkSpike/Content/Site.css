@@ -36,9 +36,6 @@ textarea {
 
 
 
-
-
-
 .openingClass {
     float: left;
     white-space: pre;
@@ -181,4 +178,17 @@ br {
 
 .hovered {
     background-color: lightgray;
+}
+
+
+
+.baa {
+    float: left;
+    border-style: dashed;
+    margin: 10px 10px 10px 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: #fff;
+    padding: 7px;
 }

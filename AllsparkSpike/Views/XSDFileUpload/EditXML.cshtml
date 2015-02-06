@@ -28,7 +28,7 @@
 
     <div class="item ctmOtherHeader">
         Other
-        <div class="item">--> <span class="ctmOther element">Fixed Value</span></div>
+        <div class="item">--> <span id="fixedValue" class="ctmOther element">Fixed Value</span></div>
         <div class="item">--> <span class="ctmOther element">Calculations</span></div>
         <div class="item">  --> <span class="ctmOther element">Number of people in household</span></div>
         <div class="item">  --> <span class="ctmOther element">Number of external doors</span></div>
@@ -52,13 +52,20 @@
             @Html.Raw(line)
         }
     </div>
-
+    
+    <div id="dialog" title="Dialog Title" style="display:none"> Some text</div>  
 </div>
 
 @section scripts
 {
     <script type="text/javascript">
         $(init);
+
+        if (!String.prototype.startsWith) {
+            String.prototype.startsWith = function (str) {
+                return !this.indexOf(str);
+            }
+        }
 
         function init() {
             $(".element").draggable({
@@ -75,14 +82,25 @@
             });
         }
         function handleCardDrop(event, ui) {
-            //alert('here');
-            event.target.innerHTML = ui.draggable.context.outerHTML;
-            //$(event.target).addClass('populatedHotspot');
-            $(event.target).removeClass('hotspot');
-            $(event.target.childNodes[0]).addClass('moo');
+            
+            //event.target.innerHTML = ui.draggable.context.outerHTML;
+            //event.target.innerHTML = ui.draggable.context.innerText;
 
-            //ui.draggable.addClass('populatedHotspot');
-            //ui.draggable.removeClass('hotspot');
+            var classes = '';
+            var classList = ui.draggable.context.className.split(/\s+/);
+            for (var i = 0; i < classList.length; i++) {
+                if (classList[i].toString().startsWith('ctm')) {
+                    classes += classList[i].toString();
+                }
+            }
+
+            var span = "<span class='baa $$classes$$'>$$x$$</span>";
+            span = span.replace("$$x$$", ui.draggable.context.innerText);
+            span = span.replace("$$classes$$", classes);
+            event.target.innerHTML = span;
+
+            $(event.target).removeClass('hotspot');
+            //$(event.target.childNodes[0]).addClass('moo');
         }
 
         //$(document).ready(function () {
@@ -90,5 +108,13 @@
         //        connectWith: '.draggable-list'
         //    });
         //});
+
+        $(document).ready(function () {
+            //$('#dialog').dialog(); 
+            $('#fixedValue').click(function () {
+                $('#dialog').dialog('open');
+                return false;
+            });
+        });
     </script>
 }
