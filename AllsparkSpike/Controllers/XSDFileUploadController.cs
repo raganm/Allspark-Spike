@@ -38,7 +38,7 @@ namespace AllsparkSpike.Controllers
             return RedirectToAction("PreviewXML");
         }
 
-        public ActionResult PreviewXML()
+        public ActionResult PreviewXml()
         {
             var previewXmlViewModel = new PreviewXmlViewModel();
             string xml = string.Empty;
@@ -62,9 +62,9 @@ namespace AllsparkSpike.Controllers
             return View(previewXmlViewModel);
         }
 
-        public ActionResult EditXML()
+        public ActionResult EditXml()
         {
-            var previewXMLViewModel = new PreviewXmlViewModel();
+            var previewXmlViewModel = new PreviewXmlViewModel();
             string xml = string.Empty;
 
             var di = new DirectoryInfo(Server.MapPath("~/App_Data/uploads"));
@@ -81,16 +81,16 @@ namespace AllsparkSpike.Controllers
                 // var doc = XDocument.Load(path); //== path to the file
             }
 
-            XmlDocument xmlDoc = new XmlDocument();
+            var xmlDoc = new XmlDocument();
             xmlDoc.LoadXml(xml);
             XmlNode rootNode = xmlDoc.DocumentElement;
             TokenizeValues(rootNode);
 
-            previewXMLViewModel.XML = FormatXml(xmlDoc.InnerXml);
+            previewXmlViewModel.XML = FormatXml(xmlDoc.InnerXml);
 
-            previewXMLViewModel.DivList = FormatDivs(previewXMLViewModel.XML);
+            previewXmlViewModel.DivList = FormatDivs(previewXmlViewModel.XML);
 
-            return View(previewXMLViewModel);
+            return View(previewXmlViewModel);
         }
 
         private List<string> FormatDivs(string innerXml)
@@ -117,20 +117,8 @@ namespace AllsparkSpike.Controllers
 
                     divs.Add(string.Concat("<div class='line'>", firstElement, middleElement, secondElement, "</div>"));
                 }
-
-                if (parts.Count() == 3)
-                {
-                    var x = 1;
-                }
-
+                
                 divs.Add("<br/>");
-            }
-
-
-            var s = string.Empty;
-            foreach (var div in divs)
-            {
-                s += div;
             }
 
             return divs;
@@ -138,14 +126,10 @@ namespace AllsparkSpike.Controllers
 
         private string FormatXml(string xmlString)
         {
-            string formattedXml = string.Empty;
-
-            formattedXml = XElement.Parse(xmlString).ToString();
+            string formattedXml = XElement.Parse(xmlString).ToString();
 
             return formattedXml;
         }
-
-
 
         private static void TokenizeValues(XmlNode node)
         {
@@ -158,51 +142,20 @@ namespace AllsparkSpike.Controllers
             //Print attributes of the node
             if (node.Attributes != null)
             {
-                XmlAttributeCollection attrs = node.Attributes;
+                var attrs = node.Attributes;
                 foreach (XmlAttribute attr in attrs)
                 {
-                    attr.Value = "$$ATTRIBUTE$$";
+                    //attr.Value = "$$ATTRIBUTE$$";
                 }
             }
 
             //Print individual children of the node, gets only direct children of the node
-            XmlNodeList children = node.ChildNodes;
+            var children = node.ChildNodes;
             foreach (XmlNode child in children)
             {
                 TokenizeValues(child);
             }
         }
-
-        private static void DisplayNodes2(XmlNode node)
-        {
-            //Print the node type, node name and node value of the node
-            if (node.NodeType == XmlNodeType.Text)
-            {
-                Console.WriteLine("Type = [" + node.NodeType + "] Value = " + node.Value);
-            }
-            else
-            {
-                Console.WriteLine("Type = [" + node.NodeType + "] Name = " + node.Name);
-            }
-
-            //Print attributes of the node
-            if (node.Attributes != null)
-            {
-                XmlAttributeCollection attrs = node.Attributes;
-                foreach (XmlAttribute attr in attrs)
-                {
-                    Console.WriteLine("Attribute Name = " + attr.Name + "; Attribute Value = " + attr.Value);
-                }
-            }
-
-            //Print individual children of the node, gets only direct children of the node
-            XmlNodeList children = node.ChildNodes;
-            foreach (XmlNode child in children)
-            {
-                DisplayNodes2(child);
-            }
-        }
-
 
         #region old
         private static void DisplayNodes(XmlNode node)
@@ -234,6 +187,36 @@ namespace AllsparkSpike.Controllers
             foreach (XmlNode child in children)
             {
                 DisplayNodes(child);
+            }
+        }
+
+        private static void DisplayNodes2(XmlNode node)
+        {
+            //Print the node type, node name and node value of the node
+            if (node.NodeType == XmlNodeType.Text)
+            {
+                Console.WriteLine("Type = [" + node.NodeType + "] Value = " + node.Value);
+            }
+            else
+            {
+                Console.WriteLine("Type = [" + node.NodeType + "] Name = " + node.Name);
+            }
+
+            //Print attributes of the node
+            if (node.Attributes != null)
+            {
+                XmlAttributeCollection attrs = node.Attributes;
+                foreach (XmlAttribute attr in attrs)
+                {
+                    Console.WriteLine("Attribute Name = " + attr.Name + "; Attribute Value = " + attr.Value);
+                }
+            }
+
+            //Print individual children of the node, gets only direct children of the node
+            XmlNodeList children = node.ChildNodes;
+            foreach (XmlNode child in children)
+            {
+                DisplayNodes2(child);
             }
         }
         #endregion

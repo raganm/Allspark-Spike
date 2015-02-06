@@ -145,3 +145,16 @@ br {
     font-size: 30px;
     font-weight: bold;
 }
+
+.populatedHotspot {
+    float: left;
+}
+
+.moo {
+    float: left;
+    position: inherit !important;
+}
+
+.hotspot .ctmPolicy {
+    float: left;
+}
