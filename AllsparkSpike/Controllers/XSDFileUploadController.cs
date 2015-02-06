@@ -40,38 +40,31 @@ namespace AllsparkSpike.Controllers
 
         public ActionResult PreviewXML()
         {
-            var previewXMLViewModel = new PreviewXMLViewModel();
+            var previewXmlViewModel = new PreviewXmlViewModel();
             string xml = string.Empty;
 
             var di = new DirectoryInfo(Server.MapPath("~/App_Data/uploads"));
 
-            var files = di.GetFiles().OrderByDescending(x=>x.LastWriteTime).ToList();
+            var files = di.GetFiles().OrderByDescending(x => x.LastWriteTime).ToList();
 
             var path = files[0].FullName;
             if (path != string.Empty)
             {
                 var generator = new XMLGenerator();
                 xml = generator.ReadSchemaFromXmlTextReader(path);
-
-                //load the document from file
-                // var doc = XDocument.Load(path); //== path to the file
             }
 
-            XmlDocument xmlDoc = new XmlDocument();
+            var xmlDoc = new XmlDocument();
             xmlDoc.LoadXml(xml);
-            XmlNode rootNode = xmlDoc.DocumentElement;
-            DisplayNodes2(rootNode);
 
-            previewXMLViewModel.XML = FormatXml(xmlDoc.InnerXml);
+            previewXmlViewModel.XML = FormatXml(xmlDoc.InnerXml);
 
-            previewXMLViewModel.DivList = FormatDivs(previewXMLViewModel.XML);
-
-            return View(previewXMLViewModel);
+            return View(previewXmlViewModel);
         }
 
         public ActionResult EditXML()
         {
-            var previewXMLViewModel = new PreviewXMLViewModel();
+            var previewXMLViewModel = new PreviewXmlViewModel();
             string xml = string.Empty;
 
             var di = new DirectoryInfo(Server.MapPath("~/App_Data/uploads"));
@@ -91,7 +84,7 @@ namespace AllsparkSpike.Controllers
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.LoadXml(xml);
             XmlNode rootNode = xmlDoc.DocumentElement;
-            DisplayNodes(rootNode);
+            TokenizeValues(rootNode);
 
             previewXMLViewModel.XML = FormatXml(xmlDoc.InnerXml);
 
@@ -111,9 +104,9 @@ namespace AllsparkSpike.Controllers
 
                 if (parts.Count() == 1)
                 {
-                    var firstElement = string.Format("<div class='openingClass'>{0}</div>", parts[0].Replace("<","&lt;").Replace(">","&gt;"));
+                    var firstElement = string.Format("<div class='openingClass'>{0}</div>", parts[0].Replace("<", "&lt;").Replace(">", "&gt;"));
 
-                    divs.Add(string.Concat("<div class='line'>",firstElement,"</div>"));
+                    divs.Add(string.Concat("<div class='line'>", firstElement, "</div>"));
                 }
 
                 if (parts.Count() == 2)
@@ -122,7 +115,7 @@ namespace AllsparkSpike.Controllers
                     var middleElement = "<div class='hotspot'>&nbsp;</div>";
                     var secondElement = string.Format("<div class='closingClass'>{0}</div>", parts[1].Replace("<", "&lt;").Replace(">", "&gt;"));
 
-                    divs.Add(string.Concat("<div class='line'>",firstElement, middleElement, secondElement,"</div>"));
+                    divs.Add(string.Concat("<div class='line'>", firstElement, middleElement, secondElement, "</div>"));
                 }
 
                 if (parts.Count() == 3)
@@ -152,18 +145,14 @@ namespace AllsparkSpike.Controllers
             return formattedXml;
         }
 
-        private static void DisplayNodes(XmlNode node)
+
+
+        private static void TokenizeValues(XmlNode node)
         {
             //Print the node type, node name and node value of the node
             if (node.NodeType == XmlNodeType.Text)
             {
-                Console.WriteLine("Type = [" + node.NodeType + "] Value = " + node.Value);
-
                 node.Value = "$$TOKEN$$";
-            }
-            else
-            {
-                Console.WriteLine("Type = [" + node.NodeType + "] Name = " + node.Name);
             }
 
             //Print attributes of the node
@@ -172,7 +161,7 @@ namespace AllsparkSpike.Controllers
                 XmlAttributeCollection attrs = node.Attributes;
                 foreach (XmlAttribute attr in attrs)
                 {
-                    Console.WriteLine("Attribute Name = " + attr.Name + "; Attribute Value = " + attr.Value);
+                    attr.Value = "$$ATTRIBUTE$$";
                 }
             }
 
@@ -180,7 +169,7 @@ namespace AllsparkSpike.Controllers
             XmlNodeList children = node.ChildNodes;
             foreach (XmlNode child in children)
             {
-                DisplayNodes(child);
+                TokenizeValues(child);
             }
         }
 
@@ -214,16 +203,39 @@ namespace AllsparkSpike.Controllers
             }
         }
 
-    }
 
-    public class PreviewXMLViewModel
-    {
-        public string XML;
-        public List<string> DivList { get; set; }
-    }
+        #region old
+        private static void DisplayNodes(XmlNode node)
+        {
+            //Print the node type, node name and node value of the node
+            if (node.NodeType == XmlNodeType.Text)
+            {
+                Console.WriteLine("Type = [" + node.NodeType + "] Value = " + node.Value);
 
-    public class LineContainer
-    {
-        public List<string> Elements { get; set; }
+                node.Value = "$$TOKEN$$";
+            }
+            else
+            {
+                Console.WriteLine("Type = [" + node.NodeType + "] Name = " + node.Name);
+            }
+
+            //Print attributes of the node
+            if (node.Attributes != null)
+            {
+                XmlAttributeCollection attrs = node.Attributes;
+                foreach (XmlAttribute attr in attrs)
+                {
+                    Console.WriteLine("Attribute Name = " + attr.Name + "; Attribute Value = " + attr.Value);
+                }
+            }
+
+            //Print individual children of the node, gets only direct children of the node
+            XmlNodeList children = node.ChildNodes;
+            foreach (XmlNode child in children)
+            {
+                DisplayNodes(child);
+            }
+        }
+        #endregion
     }
 }
