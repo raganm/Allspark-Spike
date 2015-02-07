@@ -217,6 +217,8 @@
     <Content Include="Content\themes\base\tabs.css" />
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
+    <Content Include="Content\toolbox.css" />
+    <Content Include="Content\toolbox2.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -279,6 +281,8 @@
     <Content Include="Views\XSDFileUpload\Index.cshtml" />
     <Content Include="Views\XSDFileUpload\PreviewXML.cshtml" />
     <Content Include="Views\XSDFileUpload\EditXML.cshtml" />
+    <Content Include="Views\Shared\Toolbox.cshtml" />
+    <Content Include="Views\Shared\Toolbox2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\uploads\" />
