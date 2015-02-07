@@ -63,8 +63,18 @@
             a.setAttribute('href',"#");
             a.innerText = node.Name;
 
+            if (node.Children) {
+                a.innerText = "+  " + node.Name;
+            } else {
+                a.innerText = node.Name;
+            }
+
             li.appendChild(a);
-            if (node.Children) li.appendChild(parseNodes(node.Children));
+
+            if (node.Children) {
+                 li.appendChild(parseNodes(node.Children));
+            }
+
             return li;
         }
 
