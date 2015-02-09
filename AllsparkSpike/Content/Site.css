@@ -42,6 +42,7 @@ textarea {
     margin: 10px 2px 0 2px;
     padding: 7px;
     font-family: monospace;
+    font-size: 11px;
 }
 
 .closingClass {
@@ -49,6 +50,7 @@ textarea {
     margin: 10px 2px 0 2px;
     padding: 7px;
     font-family: monospace;
+    font-size: 11px;
 }
 
 .hotspot {
@@ -73,12 +75,12 @@ br {
 }
 
 .toolbox {
-    width: 300px;
+    width: 450px;
     float: left;
 }
 
 .editor {
-    width: 800px;
+    width: 950px;
     float: left;
 }
 
@@ -184,19 +186,50 @@ br {
 
 .baa {
     float: left;
-    border-style: dashed;
+    //border-style: dashed;
     margin: 10px 10px 10px 10px;
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
     border-radius: 10px;
-    background: #fff;
+    /background: #fff;
     padding: 7px;
 }
 
 
+#policyDetailsMenu a {
+    background-color: lightblue;
+    color: black;
+}
 
 
+.policyDetailsMenu {
+    background-color: lightblue;
+    color: black;
+    font-size: 11px;
+}
 
+#overridesMenu a {
+    background-color: lightgrey;
+    color: black;
+}
 
+#collectionsMenu a {
+    background-color: lightyellow;
+    color: black;
+}
 
+#calculationsMenu a {
+    background-color: lightcoral;
+    color: black;
+    color: white;
+}
+
+#fixedValueMenu a {
+    background-color: thistle;
+    color: black;
+}
+
+#editorContents {
+    padding: 44px 0 0 0;
+}
 

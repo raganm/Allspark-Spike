@@ -93,6 +93,37 @@ namespace AllsparkSpike.Controllers
             return View(previewXmlViewModel);
         }
 
+        public ActionResult EditXml2()
+        {
+            var previewXmlViewModel = new PreviewXmlViewModel();
+            string xml = string.Empty;
+
+            var di = new DirectoryInfo(Server.MapPath("~/App_Data/uploads"));
+
+            var files = di.GetFiles().OrderByDescending(x => x.LastWriteTime).ToList();
+
+            var path = files[0].FullName;
+            if (path != string.Empty)
+            {
+                var generator = new XMLGenerator();
+                xml = generator.ReadSchemaFromXmlTextReader(path);
+
+                //load the document from file
+                // var doc = XDocument.Load(path); //== path to the file
+            }
+
+            var xmlDoc = new XmlDocument();
+            xmlDoc.LoadXml(xml);
+            XmlNode rootNode = xmlDoc.DocumentElement;
+            TokenizeValues(rootNode);
+
+            previewXmlViewModel.XML = FormatXml(xmlDoc.InnerXml);
+
+            previewXmlViewModel.DivList = FormatDivs(previewXmlViewModel.XML);
+
+            return View(previewXmlViewModel);
+        }
+
         private List<string> FormatDivs(string innerXml)
         {
             var lines = innerXml.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
@@ -155,6 +186,11 @@ namespace AllsparkSpike.Controllers
             {
                 TokenizeValues(child);
             }
+        }
+
+        public ActionResult Toolbox()
+        {
+            return View();
         }
 
         #region old

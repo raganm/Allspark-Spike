@@ -1,11 +1,52 @@
-﻿@{
-    ViewBag.Title = "Home Page";
-}
+﻿<!-- We will create a family tree using just CSS(3) The markup will be simple nested lists -->
+<style type="text/css">
+    .policyDetailMenuItems a {
+        background-color: lightblue !important;
+        border-style: dashed !important;
+        border-color: black !important;
+        border-width: 1px !important;
+    }
 
+    !li ul {
+        color: red;
+        background-color: red;
+    }
+</style>
 
-<div class="row">
-    @Html.Partial("Toolbox2")
+<hr />
+
+@*<div class="tree" id="moo"></div>*@
+
+<div class="tree">
+    <ul>
+        <li>
+            <a href="#">Toolbox</a>
+            <ul>
+                <li id="policyDetailsMenu">
+                    <a href="#">+  Policy Details</a>
+                </li>
+
+                <li id="overridesMenu">
+                    <a href="#">Overrides</a>
+                </li>
+
+                <li id="collectionsMenu">
+                    <a href="#">Collections</a>
+                </li>
+
+                <li id="calculationsMenu">
+                    <a href="#">Calculations</a>
+                </li>
+
+                <li id="fixedValueMenu">
+                    <a href="#">Fixed Value</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
 </div>
+
 
 @section scripts
 {
@@ -25,8 +66,6 @@
             });
         });
 
-
-
         $(function () {
 
             var x = parseNodes(jsonData);
@@ -44,8 +83,6 @@
 
         });
 
-
-
         function parseNodes(nodes) { // takes a nodes array and turns it into a <ol>
             var ol = document.createElement("ul");
             for (var i = 0; i < nodes.length; i++) {
@@ -60,21 +97,23 @@
             //li.className = node.class;
 
             var a = document.createElement("a");
-            a.setAttribute('href',"#");
+            a.setAttribute('href', "#");
             a.innerText = node.Name;
 
             if (node.Children) {
                 a.innerText = "+  " + node.Name;
             } else {
                 a.innerText = node.Name;
+                a.classList.add("draggableData");
             }
 
             a.data = "sdsdsd";
 
+
             li.appendChild(a);
 
             if (node.Children) {
-                 li.appendChild(parseNodes(node.Children));
+                li.appendChild(parseNodes(node.Children));
             }
 
             return li;
@@ -495,5 +534,65 @@
                 ]
             }
         ];
+    </script>
+
+    <script type="text/javascript">
+        $(init);
+
+        if (!String.prototype.startsWith) {
+            String.prototype.startsWith = function (str) {
+                return !this.indexOf(str);
+            }
+        }
+
+        function init() {
+            $(".draggableData").draggable({
+                //containment: '#toolbox',
+                stack: '#toolbox div',
+                cursor: 'move',
+                revert: true
+            });
+
+            $('.hotspot').droppable({
+                //accept: '#toolbox div',
+                hoverClass: 'hovered',
+                drop: handleCardDrop
+            });
+        }
+        function handleCardDrop(event, ui) {
+
+            //event.target.innerHTML = ui.draggable.context.outerHTML;
+            //event.target.innerHTML = ui.draggable.context.innerText;
+
+            var classes = '';
+            var classList = ui.draggable.context.className.split(/\s+/);
+            for (var i = 0; i < classList.length; i++) {
+                if (classList[i].toString().startsWith('ctm')) {
+                    classes += classList[i].toString();
+                }
+            }
+
+            var span = "<span class='baa $$classes$$'>$$x$$</span>";
+            span = span.replace("$$x$$", ui.draggable.context.innerText);
+            span = span.replace("$$classes$$", classes);
+            event.target.innerHTML = span;
+
+            $(event.target).removeClass('hotspot');
+            //$(event.target.childNodes[0]).addClass('moo');
+        }
+
+        //$(document).ready(function () {
+        //    $(' .draggable-list').sortable({
+        //        connectWith: '.draggable-list'
+        //    });
+        //});
+
+        $(document).ready(function () {
+            //$('#dialog').dialog();
+            $('#fixedValue').click(function () {
+                $('#dialog').dialog('open');
+                return false;
+            });
+        });
     </script>
 }

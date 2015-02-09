@@ -1,27 +1,48 @@
 ﻿<!-- We will create a family tree using just CSS(3) The markup will be simple nested lists -->
 <style type="text/css">
     .policyDetailMenuItems a {
-        background-color: lightblue!important;
+        background-color: lightblue !important;
         border-style: dashed !important;
-        border-color: black!important;
-        border-width: 1px!important;
-            }
+        border-color: black !important;
+        border-width: 1px !important;
+    }
+
     !li ul {
-         color: red;
+        color: red;
         background-color: red;
-     }
+    }
 </style>
 
-<hr/>
+<hr />
 
 @*<div class="tree" id="moo"></div>*@
 
 <div class="tree">
-        <ul>
-            <li id="moo">
-                <a href="#">Policy Details</a>
+    <ul>
+        <li>
+            <a href="#">Toolbox</a>
+            <ul>
+                <li id="policyDetailsMenu">
+                    <a href="#">+  Policy Details</a>
+                </li>
 
-            </li>
+                <li id="overridesMenu">
+                    <a href="#">Overrides</a>
+                </li>
 
-        </ul>
-    </div>
+                <li id="collectionsMenu">
+                    <a href="#">Collections</a>
+                </li>
+
+                <li id="calculationsMenu">
+                    <a href="#">Calculations</a>
+                </li>
+
+                <li id="fixedValueMenu">
+                    <a href="#">Fixed Value</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+</div>

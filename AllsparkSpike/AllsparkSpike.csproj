@@ -283,6 +283,8 @@
     <Content Include="Views\XSDFileUpload\EditXML.cshtml" />
     <Content Include="Views\Shared\Toolbox.cshtml" />
     <Content Include="Views\Shared\Toolbox2.cshtml" />
+    <Content Include="Views\XSDFileUpload\EditXml2.cshtml" />
+    <Content Include="Views\XSDFileUpload\Toolbox.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\uploads\" />
