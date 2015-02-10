@@ -84,8 +84,9 @@
 
         a.classList.add("policyDetailsMenu");
 
-        a.data = "sdsdsd";
+        $(a).data('test', node.Description);
 
+        a.title = node.Description;
 
         li.appendChild(a);
 
@@ -539,6 +540,8 @@
             });
         }
         function handleCardDrop(event, ui) {
+
+            //alert($(ui.draggable).data('test'));
 
             //event.target.innerHTML = ui.draggable.context.outerHTML;
             //event.target.innerHTML = ui.draggable.context.innerText;
