@@ -54,9 +54,36 @@
             e.stopPropagation();
         });
 
+
+        $('#addNewFixedValue').click(function () {
+            var myText = prompt('What is your new fixed value');
+            if (myText) {
+                var li = document.createElement("li");
+                var a = document.createElement("a");
+                a.setAttribute('href', "#");
+                a.innerText = myText;
+                a.classList.add("draggableData");
+
+                a.classList.add("fixedValueMenu");
+
+                $(a).data('test', myText);
+                $(a).draggable({
+                    //containment: '#toolbox',
+                    stack: '#toolbox div',
+                    cursor: 'move',
+                    revert: true
+                });
+
+                a.title = myText;
+
+                li.appendChild(a);
+
+                $('#fixedValues').prepend(li);
+            };
+        });
     });
 
-
+   
 
     function parseNodes(nodes) { // takes a nodes array and turns it into a <ol>
         var ol = document.createElement("ul");
