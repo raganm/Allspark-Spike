@@ -172,14 +172,6 @@
     <Compile Include="Models\XMLGenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="XMLGen\Facets.cs" />
-    <Compile Include="XMLGen\Generator.cs" />
-    <Compile Include="XMLGen\InstanceAttribute.cs" />
-    <Compile Include="XMLGen\InstanceElement.cs" />
-    <Compile Include="XMLGen\InstanceGroup.cs" />
-    <Compile Include="XMLGen\InstanceObject.cs" />
-    <Compile Include="XMLGen\XmlGen.cs" />
-    <Compile Include="XMLGen\XmlSampleGenerator.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -277,8 +269,6 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="XMLGen\build.bat" />
-    <Content Include="XMLGen\EULA.rtf" />
     <Content Include="Views\XSDFileUpload\Index.cshtml" />
     <Content Include="Views\XSDFileUpload\PreviewXML.cshtml" />
     <Content Include="Views\XSDFileUpload\EditXML.cshtml" />
@@ -297,6 +287,12 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Allspark.XSDtoXML\Allspark.XSDtoXML.csproj">
+      <Project>{BF92A228-496A-42AB-8012-29EE5E3F39FB}</Project>
+      <Name>Allspark.XSDtoXML</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
