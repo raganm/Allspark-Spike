@@ -229,6 +229,11 @@ br {
     color: black;
 }
 
+.fixedValueMenu{
+    background-color: thistle;
+    color: black;
+}
+
 #editorContents {
     padding: 44px 0 0 0;
 }
