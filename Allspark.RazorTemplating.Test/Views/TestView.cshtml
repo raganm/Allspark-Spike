@@ -1,0 +1,33 @@
+﻿@*@model policy*@
+
+@{
+    string fullName;
+    string salutation;
+}
+
+@{
+    if (@Model.policyholders.primarypolicyholder.firstname.ToLower() == "john" || @Model.policyholders.primarypolicyholder.firstname == "bob")
+    {
+        salutation = "Mr";
+    }
+    else if (@Model.policyholders.primarypolicyholder.firstname.ToLower() == "jane" || @Model.policyholders.primarypolicyholder.firstname == "dorris")
+    {
+        salutation = "Mrs";
+    }
+    else
+    {
+        salutation = "???";
+    }
+
+    fullName = string.Format("{0} {1} {2}", @salutation, @Model.policyholders.primarypolicyholder.firstname, @Model.policyholders.primarypolicyholder.lastname);
+}
+
+
+<xml>
+    <policyholder>
+        <title>@salutation</title>
+        <firstname>@Model.policyholders.primarypolicyholder.firstname</firstname>
+        <lastname>@Model.policyholders.primarypolicyholder.lastname</lastname>
+        <fullname>@fullName</fullname>
+    </policyholder>
+</xml>

@@ -7,6 +7,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AllsparkSpike", "AllsparkSp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestHarness", "TestHarness\TestHarness.csproj", "{C9A9DEA6-864D-4448-ACC8-6B4C3367E5AF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Allspark.RazorTemplating", "Allspark.RazorTemplating\Allspark.RazorTemplating.csproj", "{7DBA189C-39F1-4F9F-8285-0531E04962FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Allspark.RazorTemplating.Test", "Allspark.RazorTemplating.Test\Allspark.RazorTemplating.Test.csproj", "{5B86F5B3-D108-4823-872D-B1A02E5872E0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{9D2F68FA-CE22-47B6-9477-11F7400D40F4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Allspark.XSDtoXML", "Allspark.XSDtoXML\Allspark.XSDtoXML.csproj", "{BF92A228-496A-42AB-8012-29EE5E3F39FB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,8 +29,24 @@ Global
 		{C9A9DEA6-864D-4448-ACC8-6B4C3367E5AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C9A9DEA6-864D-4448-ACC8-6B4C3367E5AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C9A9DEA6-864D-4448-ACC8-6B4C3367E5AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DBA189C-39F1-4F9F-8285-0531E04962FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DBA189C-39F1-4F9F-8285-0531E04962FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DBA189C-39F1-4F9F-8285-0531E04962FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DBA189C-39F1-4F9F-8285-0531E04962FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B86F5B3-D108-4823-872D-B1A02E5872E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B86F5B3-D108-4823-872D-B1A02E5872E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B86F5B3-D108-4823-872D-B1A02E5872E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B86F5B3-D108-4823-872D-B1A02E5872E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF92A228-496A-42AB-8012-29EE5E3F39FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF92A228-496A-42AB-8012-29EE5E3F39FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF92A228-496A-42AB-8012-29EE5E3F39FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF92A228-496A-42AB-8012-29EE5E3F39FB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C9A9DEA6-864D-4448-ACC8-6B4C3367E5AF} = {9D2F68FA-CE22-47B6-9477-11F7400D40F4}
+		{5B86F5B3-D108-4823-872D-B1A02E5872E0} = {9D2F68FA-CE22-47B6-9477-11F7400D40F4}
 	EndGlobalSection
 EndGlobal
