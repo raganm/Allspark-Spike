@@ -11,6 +11,7 @@
 </div>
 
 <div class="editor">
+    @*<button id="btnSave">Save</button>*@
     <div id="editorContents" class="draggable-list">
         @foreach (var line in Model.DivList)
         {
@@ -71,6 +72,8 @@
         }
 
         function handleCardDrop(event, ui) {
+
+            alert($(ui.draggable).data('test'));
 
             var classes = '';
             var classList = ui.draggable.context.className.split(/\s+/);
@@ -167,6 +170,22 @@
                 hoverClass: 'hovered',
                 drop: handleCardDrop
             });
+
+            $('#btnSave').click(function() {
+                var div = document.getElementById('editorContents');
+                var divs = div.getElementsByClassName('line');
+                var divArray = [];
+                for (var i = 0; i < divs.length; i += 1) {
+                    divArray.push(divs[i].innerHTML);
+                    var children = divs[i].childNodes;
+
+                    for (child in children) {
+                        console.log(children[child]);
+                    }
+                }
+            });
+
+
         });
 
     </script>
